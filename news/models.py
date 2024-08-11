@@ -1,8 +1,8 @@
 from django.db import models
 
 class Articles(models.Model):
-    title = models.CharField('Название', max_length=50)
-    full_text = models.TextField('Рецепт')
+    title = models.CharField('Имя пользователя', max_length=50)
+    full_text = models.TextField('Отзыв')
     date = models.DateTimeField('Дата публикации')
 
 
@@ -14,5 +14,5 @@ class Articles(models.Model):
         return f'/news/{self.id}'
 
     class Meta:
-        verbose_name = 'Новость'
-        verbose_name_plural = 'Новости'
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

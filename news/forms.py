@@ -9,7 +9,7 @@ class ArticlesForm(ModelForm):
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Название рецепта'
+                'placeholder': 'Имя пользователя'
             }),
             "date": DateTimeInput(attrs={
                 'class': 'form-control',
@@ -17,7 +17,7 @@ class ArticlesForm(ModelForm):
             }),
             "full_text": Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Текст рецепта'
+                'placeholder': 'Отзыв'
             }),
 
         }
