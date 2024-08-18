@@ -2,35 +2,38 @@ body{
     background: black;
 }
 
-aside {
+.menu{
+
+display: flex;
+flex-direction: column;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Тень для бокового меню */
+position: fixed;
 float: left;
 background: #181818;
 width: 20%;
 padding: 2.5%;
-height: 160vh;
+ height: 100vh;
 color: #fff;
 border-right: 5px solid #4d4d4d;
+
+
 
 }
 
 aside img{
+
 width: 120px;
 float: left;
 border-radius: 30px
 
+
 }
 
-span{
-font-size: 30px;
-margin-left: 5px;
-font-weight: bold;
-position: relative;
-top: -5px;
-}
 
 aside h3{
-margin-top: 50px;
+margin-top: 30px;
 font-size: 25px;
+font-family: "Cormorant";
 }
 
 aside a:link{
@@ -38,6 +41,8 @@ aside a:link{
 }
 aside ul li {
 display: block;
+font-family: "Cormorant";
+font-size: 23px;
 }
 
 aside a {
@@ -99,5 +104,7 @@ width: 500px;
 margin-top: 50px;
 }
 
-
-
+.logo{
+font-family: "Great Vibes";
+font-size: 40px;
+margin-left: 5px;}
