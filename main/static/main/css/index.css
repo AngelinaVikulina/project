@@ -81,33 +81,6 @@ body {
 
 
 
-.animated-text {
-  animation: slide-and-scale 8s ease-in-out infinite;
-  position: relative;
-  left: 200px;
-}
-@keyframes slide-and-scale {
-  0% {
-    transform: translateX(-50%);
-    font-size: 40px;
-  }
-  25% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(50%);
-    font-size: 60px;
-  }
-  75% {
-    transform: translateX(100%);
-    font-size: 40px;
-  }
-  100% {
-    transform: translateX(100%);
-    font-size: 40px;
-  }
-}
-
 
 
 
@@ -123,7 +96,7 @@ color: white;
 font-family:"Cormorant";
 font-size: 55px;
 margin-left: 18%;
-margin-bottom: 10%;
+
 
  }
 
@@ -137,7 +110,7 @@ flex: 1;
 .card-container {
     display: flex; /* Используем flexbox для горизонтального расположения карточек */
     justify-content: center; /* Центрируем карточки */
-    margin-top: 20px; /* Отступ сверху */
+    margin-top: 70px; /* Отступ сверху */
     margin-left: 20%;
 }
 
@@ -162,7 +135,7 @@ flex: 1;
 
 .image-text-block {
     margin-top: 12%; /* Отступ сверху */
-    margin-left: 20%; /* Отступ слева */
+    margin-left: 21.5%; /* Отступ слева */
     overflow: hidden; /* Обернуть плавающие элементы */
 }
 
@@ -207,3 +180,66 @@ color: white;
     font-size: 25px;
 
 }
+.image-text-block{
+background: #333232;}
+
+.delivery {
+  display: flex;
+  margin-left: 250px;
+  padding: 20px;
+   margin-top: 10%;
+}
+
+.photo-container {
+  display: flex;
+  width: 50%; /* Увеличиваем ширину фото блоков */
+}
+
+.photo-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+}
+
+.photo-left img {
+  width:100%;
+ height: 240px;
+  margin-bottom: 30px;
+  border-radius: 25px;
+}
+
+.photo-right {
+  position: relative;
+  left: 19px;
+  width: 60%;
+  height: 94%;
+
+}
+
+.photo-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.text {
+  width: 50%; /* Уменьшаем ширину текстового блока */
+  padding-left: 35px;
+  text-align: left;
+  color: white;
+}
+
+.text p{
+
+ font-size: 30px;
+ margin-top: 8%;
+  font-family: "Cormorant";
+}
+
+.text h2{
+font-size: 40px;
+font-family: "Comfortaa";
+}
+
