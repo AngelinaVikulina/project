@@ -91,7 +91,40 @@
              Онлайн-приложение для заказа</p>
     </div>
 </div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="first-col">
+                <img src="{% static 'main/img/f.png' %}" alt="Описание изображения">
+                <h3>Кулинарный изыск</h3>
+               <p>Закажите еду у нас и наслаждайтесь вкуснейшими блюдами в ресторане или прямо у себя дома! Кулинарное наслаждение - выбор для настоящих гурманов!</p>
+            </div>
+            <div class="footer-col second-col">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="{% url 'about' %}">О нас</a></li>
+                    <li><a href="{% url 'news_home' %}">Отзывы</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Социальные сети</h3>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Кулинарный изыск
+                . Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
+<script src="https://kit.fontawesome.com/your_fontawesome_kit_id.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 {% endblock %}
 
 

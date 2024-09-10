@@ -4,11 +4,87 @@
 {% block title %} О нас {% endblock %}
 
 {% block content %}
-   <div class="features">
-        <h1>О нас </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci earum inventore iste quae qui quisquam sapiente sint. Provident, sunt, ut?</p>
-        <button class="btn btn-danger">Нажми</button>
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О Нас</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel = 'stylesheet' href = "{% static 'main/css/about.css' %}">
+  <div class="content">
+        <div class="hero">
+            <div class="container">
+                <h1>Добро пожаловать в наш ресторан</h1>
+                <p>У нас вкусная еда и уютная атмосфера.</p>
+            </div>
+        </div>
+
+        <div class="container section" id="about">
+            <h2>О Нас</h2>
+            <p>Мы - это команда профессионалов, которая любит готовить и радовать наших гостей. Наш ресторан предлагает широкий ассортимент блюд, от традиционной кухни до оригинальных авторских решений.</p>
+            <p>Мы ценим каждого нашего клиента и стремимся сделать ваше посещение незабываемым.</p>
+        </div>
+
+        <div class="container photo-gallery section" id="gallery">
+            <h2>Наша Галерея</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{% static 'main/img/food2.jpg' %}" alt="Фотография 1">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'main/img/food2.jpg' %}" alt="Фотография 2">
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static 'main/img/food2.jpg' %}" alt="Фотография 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="container section" id="booking">
+            <h2>Бронирование столика</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" class="form-control" id="name" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата</label>
+                    <input type="date" class="form-control" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Время</label>
+                    <input type="time" class="form-control" id="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Количество гостей</label>
+                    <select class="form-control" id="guests" required>
+                        <option value="">Выберите количество</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Забронировать</button>
+            </form>
+        </div>
+
+        <footer class="text-center py-4">
+            <p>© 2023 Ваш ресторан. Все права защищены.</p>
+        </footer>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 
 {% endblock %}
 
