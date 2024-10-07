@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-center">Меню</h3>
+        <div class="d-flex align-items-center">
+            <input type="text" id="searchInput" class="form-control mr-2" placeholder="Поиск блюд...">
+            <a href="{% url 'view_cart' %}" class="btn btn-primary">
+                <i class="fas fa-shopping-cart"></i> Корзина
+            </a>
+        </div>
+    </div>
+    <div class="row" id="dishList">
+        {% for dish in dishes %}
+        <div class="col-md-4 dish-item">
+            <div class="card mb-4">
+                {% if dish.image %}
+                <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ dish.name }}</h5>
+                    <p class="card-text">{{ dish.description }}</p>
+                    <p class="card-text">Цена: {{ dish.price }} руб.</p>
+                    <a href="{% url 'add_to_cart' dish.id %}" class="btn btn-primary">Добавить в корзину</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/your_fontawesome_kit_id.js" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const filter = this.value.toLowerCase();
+        const dishItems = document.querySelectorAll('.dish-item');
+
+        dishItems.forEach(item => {
+            const dishName = item.querySelector('.card-title').innerText.toLowerCase();
+            if (dishName.includes(filter)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}

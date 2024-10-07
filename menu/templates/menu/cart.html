@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center">Корзина</h3>
+    {% if cart_items %}
+        <div class="row">
+            {% for item in cart_items %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    {% if item.dish.image %}
+                    <img src="{{ item.dish.image.url }}" class="card-img-top" alt="{{ item.dish.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.dish.name }}</h5>
+                        <p class="card-text">{{ item.dish.description }}</p>
+                        <p class="card-text">Цена: {{ item.dish.price }} руб.</p>
+                        <p class="card-text">Количество: {{ item.quantity }}</p>
+                        <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger">Удалить</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <h3>Общая сумма: {{ total_price }} руб.</h3>
+            <button class="btn btn-success" onclick="processPayment()">Оплатить заказ</button>
+        </div>
+    {% else %}
+        <p class="text-center">Ваша корзина пуста.</p>
+    {% endif %}
+</div>
+
+<script>
+    function processPayment() {
+        alert('Оплата заказа на сумму ' + {{ total_price }} + ' руб. будет обработана.');
+        // Здесь можно добавить логику для обработки платежа
+    }
+</script>
+{% endblock %}
