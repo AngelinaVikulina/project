@@ -12,15 +12,17 @@
             </a>
         </div>
     </div>
+
     <div class="row" id="dishList">
         {% for dish in dishes %}
         <div class="col-md-4 dish-item">
             <div class="card mb-4">
-                {% if dish.image %}
-                <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
-                {% else %}
-                <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top" alt="Default Image">
-                {% endif %}
+               {% if dish.image %}
+    <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+{% else %}
+    <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top" alt="Default Image">
+{% endif %}
+
                 <div class="card-body">
                     <h5 class="card-title">{{ dish.name }}</h5>
                     <p class="card-text">{{ dish.description }}</p>
@@ -30,6 +32,7 @@
             </div>
         </div>
         {% endfor %}
+
     </div>
 </div>
 
