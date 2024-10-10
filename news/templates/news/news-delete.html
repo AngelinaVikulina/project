@@ -1,8 +1,9 @@
 {% extends 'main/layout.html' %}
-
 {% block title %}Удаление отзыва{% endblock %}
 
 {% block content %}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
      <div class="features">
         <h1 class="name">Удаление отзыва</h1>
         <form method="post">

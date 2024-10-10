@@ -1,23 +1,22 @@
+from django import forms
 from .models import Articles
-from django.forms import ModelForm, TextInput, DateTimeInput, Textarea
 
-class ArticlesForm(ModelForm):
+class ArticlesForm(forms.ModelForm):
     class Meta:
         model = Articles
-        fields = ["title", "full_text", "date"]
+        fields = ['title', 'full_text', 'date']  # Убедитесь, что поле 'author' не включено в форму
 
         widgets = {
-            "title": TextInput(attrs={
+            "title": forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Имя пользователя'
             }),
-            "date": DateTimeInput(attrs={
+            "date": forms.DateTimeInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата публикации'
             }),
-            "full_text": Textarea(attrs={
+            "full_text": forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Отзыв'
             }),
-
         }

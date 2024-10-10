@@ -1,48 +1,47 @@
-body{
+body {
     background: black;
 }
 
-.menu{
-
-display: flex;
-flex-direction: column;
-box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Тень для бокового меню */
-position: fixed;
-float: left;
-background: #181818;
-width: 20%;
-padding: 2.5%;
- height: 100vh;
-color: #fff;
-border-right: 5px solid #4d4d4d;
-
-
-
+.menu {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Тень для бокового меню */
+    position: fixed;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
 }
 
-aside img{
-
-width: 120px;
-float: left;
-border-radius: 30px
-
-
+aside img {
+    width: 120px;
+    border-radius: 30px;
 }
 
-
-aside h3{
-margin-top: 30px;
-font-size: 25px;
-font-family: "Cormorant";
+aside h3 {
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: "Cormorant";
 }
 
-aside a:link{
-  text-decoration: none!important;
+aside a:link {
+    text-decoration: none !important;
 }
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 aside ul li {
-display: block;
-font-family: "Cormorant";
-font-size: 23px;
+    display: block;
+    font-family: "Cormorant";
+    font-size: 23px;
+    margin: 0;
+    padding: 0;
 }
 
 aside a {
@@ -51,8 +50,9 @@ aside a {
     display: block;
     margin-top: 20px;
     transition: all .6s ease;
-
 }
+
+
 
 aside a:hover {
     color: red;
@@ -108,3 +108,32 @@ margin-top: 50px;
 font-family: "Great Vibes";
 font-size: 40px;
 margin-left: 5px;}
+
+.content-container {
+        margin-left: 260px; /* Увеличьте это значение, если нужно больше отступа */
+        padding-top: 20px; /* Уменьшите это значение, если нужно меньше отступа сверху */
+    }
+
+    .review-card {
+        max-width: 400px; /* Установите максимальную ширину карточки */
+        margin: 0 auto; /* Центрируйте карточку */
+        margin-bottom: 20px; /* Уменьшите отступ между карточками */
+    }
+
+    .card-body {
+        padding: 15px; /* Увеличьте внутренние отступы карточек */
+    }
+
+    .card-title {
+        font-size: 1.5rem; /* Увеличьте размер заголовка */
+    }
+
+    .card-text {
+        font-size: 1.2rem; /* Увеличьте размер текста */
+    }
+
+    .btn-warning {
+        font-size: 1rem; /* Увеличьте размер кнопки */
+    }
+    .text-center {
+    color: white;}

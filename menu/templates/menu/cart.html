@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container mt-5">
     <h3 class="text-center">Корзина</h3>
@@ -33,8 +32,42 @@
 
 <script>
     function processPayment() {
-        alert('Оплата заказа на сумму ' + {{ total_price }} + ' руб. будет обработана.');
-        // Здесь можно добавить логику для обработки платежа
+        // Получаем общую сумму заказа
+        var totalPrice = {{ total_price }};
+
+        // Создаем объект данных для отправки на сервер
+        var paymentData = {
+            total_price: totalPrice,
+            // Добавьте другие необходимые данные, такие как список товаров, идентификатор пользователя и т.д.
+        };
+
+        // Отправляем данные на сервер с помощью AJAX
+        fetch('/menu/process_payment/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}' // Добавляем CSRF токен для безопасности
+            },
+            body: JSON.stringify(paymentData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert('Оплата заказа на сумму ' + totalPrice + ' руб. успешно обработана.');
+                // Здесь можно добавить логику для обновления страницы или перенаправления пользователя
+            } else {
+                alert('Ошибка при обработке платежа: ' + data.message);
+            }
+        })
+        .catch(error => {
+            alert('Ошибка при обработке платежа: ' + error.message);
+        });
     }
 </script>
+
 {% endblock %}

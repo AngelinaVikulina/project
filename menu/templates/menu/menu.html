@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-5">
@@ -17,6 +18,8 @@
             <div class="card mb-4">
                 {% if dish.image %}
                 <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+                {% else %}
+                <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top" alt="Default Image">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ dish.name }}</h5>
