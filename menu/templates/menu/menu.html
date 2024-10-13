@@ -14,12 +14,15 @@
     </div>
 
     <div class="row" id="dishList">
+        {{dishes}}
         {% for dish in dishes %}
+         {{dish.image}}
         <div class="col-md-4 dish-item">
             <div class="card mb-4">
                {% if dish.image %}
     <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
 {% else %}
+                {{dish.image}}
     <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top" alt="Default Image">
 {% endif %}
 

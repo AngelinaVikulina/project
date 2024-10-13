@@ -8,7 +8,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Настройки для медиафайлов
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 """
 Django settings for itproger project.
@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-eb=$$#5j1%thhk7q8#p%u^-9%k$o_de#f_d%#d5lnjfbl)vdrd
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -40,7 +41,9 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-ALLOWED_HOSTS = []
+
+
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

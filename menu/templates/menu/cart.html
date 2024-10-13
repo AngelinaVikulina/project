@@ -23,45 +23,105 @@
         </div>
         <div class="text-center mt-4">
             <h3>Общая сумма: {{ total_price }} руб.</h3>
-            <button class="btn btn-success" onclick="processPayment()">Оплатить заказ</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#paymentModal">Оплатить заказ</button>
         </div>
     {% else %}
         <p class="text-center">Ваша корзина пуста.</p>
     {% endif %}
 </div>
 
+<!-- Модальное окно -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Оплата заказа</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес</label>
+                        <input type="text" class="form-control" id="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Номер телефона</label>
+                        <input type="text" class="form-control" id="phone" required>
+                    </div>
+                    <p>Оплата осуществляется картой онлайн.</p>
+                    <button type="submit" class="btn btn-primary">Оплатить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    function processPayment() {
-        // Получаем общую сумму заказа
-        var totalPrice = {{ total_price }};
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        // Создаем объект данных для отправки на сервер
-        var paymentData = {
-            total_price: totalPrice,
-            // Добавьте другие необходимые данные, такие как список товаров, идентификатор пользователя и т.д.
-        };
+    // Получаем общую сумму заказа
+    var totalPrice = {{ total_price }};
 
-        // Отправляем данные на сервер с помощью AJAX
-        fetch('/process_payment/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': '{{ csrf_token }}' // Добавляем CSRF токен для безопасности
-            },
-            body: JSON.stringify(paymentData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Оплата заказа на сумму ' + totalPrice + ' руб. успешно обработана.');
+    // Получаем данные из формы
+    var name = document.getElementById('name').value;
+    var address = document.getElementById('address').value;
+    var phone = document.getElementById('phone').value;
+
+    // Логирование данных для отладки
+    console.log('Payment Data:', {
+        total_price: totalPrice,
+        name: name,
+        address: address,
+        phone: phone,
+    });
+
+    // Создаем объект данных для отправки на сервер
+    var paymentData = {
+        total_price: totalPrice,
+        name: name,
+        address: address,
+        phone: phone,
+        // Добавьте другие необходимые данные, такие как список товаров, идентификатор пользователя и т.д.
+    };
+
+    // Отправляем данные на сервер с помощью AJAX
+    fetch('/process_payment/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}' // Добавляем CSRF токен для безопасности
+        },
+        body: JSON.stringify(paymentData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Оплата заказа на сумму ' + totalPrice + ' руб. успешно обработана.');
+
+            // Показать модальное окно для ввода кода подтверждения
+            var confirmationCode = prompt('Введите код подтверждения, отправленный на ваш телефон:');
+            if (confirmationCode === data.confirmation_code.toString()) {
+                alert('Код подтверждения введен верно. Платеж завершен.');
                 // Здесь можно добавить логику для обновления страницы или перенаправления пользователя
             } else {
-                alert('Ошибка при обработке платежа: ' + data.message);
+                alert('Неверный код подтверждения. Платеж не завершен.');
             }
-        })
-        .catch(error => {
-            alert('Ошибка при обработке платежа: ' + error.message);
-        });
-    }
+        } else {
+            alert('Ошибка при обработке платежа: ' + data.message);
+        }
+    })
+    .catch(error => {
+        alert('Ошибка при обработке платежа: ' + error.message);
+    });
+});
+
 </script>
+
 {% endblock %}

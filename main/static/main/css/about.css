@@ -1,29 +1,5 @@
- body { background-color: black;
+.content-with-sidebar {
+     margin-left: -20px;}
 
-
-        }
-.content {
- margin-left: 250px;
- color: white;
- padding: 20px;
-        }
-aside div.menu cpan.logo{
- font-family: "Great Vibes";
-}
-
-.hero {
-            background-image: url('your-image-url.jpg');
-            background-size: cover;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        .section {
-            padding: 50px 0;
-        }
-        .photo-gallery img {
-            width: 100%;
-            height: auto;
-        }
-
-
+.mt-5{
+color:white;}
