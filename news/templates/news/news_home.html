@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Отзывы о нас{% endblock %}
+
+{% block content %}
+{% load static %}
+ <link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <!-- Боковое меню здесь -->
+            </div>
+            <div class="col-md-10 content-container">
+                <div class="container mt-3">
+                    <h1 class="text-center mb-4">Отзывы о нас</h1>
+                    {% if news %}
+                        {% for el in news %}
+                            <div class="card mb-4 review-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ el.title }}</h4>
+                                    <p class="card-text">{{ el.anons }}</p>
+                                    <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Прочитать отзыв</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info text-center" role="alert">
+                            У вас нет записей!
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
