@@ -1,0 +1,139 @@
+body {
+    background: black;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Тень для бокового меню */
+    position: fixed;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+aside img {
+    width: 120px;
+    border-radius: 30px;
+}
+
+aside h3 {
+    margin-top: 30px;
+    font-size: 25px;
+    font-family: "Cormorant";
+}
+
+aside a:link {
+    text-decoration: none !important;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside ul li {
+    display: block;
+    font-family: "Cormorant";
+    font-size: 23px;
+    margin: 0;
+    padding: 0;
+}
+
+aside a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: all .6s ease;
+}
+
+
+
+aside a:hover {
+    color: red;
+    transform: scale(1.05);
+}
+
+.features {
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+
+.features h1{
+font-size: 50px;
+margin-bottom: 50px;
+}
+
+.features p{
+text-align: center;
+max-width: 400px;
+margin: 30px auto 20px 570px;
+
+
+}
+
+.alert-warning {
+  margin: auto;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px; /* Измените значение на нужную ширину блока */
+  height: 180px; /* Измените значение на нужную высоту блока */
+  background-color: #edd69a; /* Цвет фона блока */
+  border: none; /* Убираем границу блока */
+  flex-direction: column
+
+
+}
+
+.alert-warning p {
+  margin: 10px;
+
+}
+
+form{
+margin-left: 39%;
+width: 500px;
+margin-top: 50px;
+}
+
+.logo{
+font-family: "Great Vibes";
+font-size: 40px;
+margin-left: 5px;}
+
+.content-container {
+        margin-left: 260px; /* Увеличьте это значение, если нужно больше отступа */
+        padding-top: 20px; /* Уменьшите это значение, если нужно меньше отступа сверху */
+    }
+
+    .review-card {
+        max-width: 400px; /* Установите максимальную ширину карточки */
+        margin: 0 auto; /* Центрируйте карточку */
+        margin-bottom: 20px; /* Уменьшите отступ между карточками */
+    }
+
+    .card-body {
+        padding: 15px; /* Увеличьте внутренние отступы карточек */
+    }
+
+    .card-title {
+        font-size: 1.5rem; /* Увеличьте размер заголовка */
+    }
+
+    .card-text {
+        font-size: 1.2rem; /* Увеличьте размер текста */
+    }
+
+    .btn-warning {
+        font-size: 1rem; /* Увеличьте размер кнопки */
+    }
+    .text-center {
+    color: white;}

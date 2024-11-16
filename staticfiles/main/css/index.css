@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif; /* Задаем шрифт для всего документа */
+}
+
+.main {
+
+     height: 100vh;
+    background-image: url(../img/main2.jfif);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    width: 100%; /* Ширина на весь экран */
+    height: 100vh; /* Высота 80% от высоты окна */
+    display: flex; /* Используем flex для центрирования содержимого */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    margin-bottom: 10%;
+
+}
+
+.container {
+    max-width: 1224px; /* Максимальная ширина контейнера */
+    width: 100%; /* Ширина контейнера */
+    padding: 0 20px;
+}
+
+.main_box {
+
+    padding: 20px; /* Отступы внутри блока */
+    text-align: center; /* Центрируем текст */
+    border-radius: 10px; /* Закругленные углы */
+    margin-left: 20%;
+    margin-top: 4%;
+}
+
+.main__box__title h1 {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  border: 4px solid black
+    margin-bottom: 15px; /* Отступ снизу заголовка */
+    color: black;
+    font-family: "Great Vibes";
+    font-size: 120px;
+}
+
+.main__box__info p {
+    margin-bottom: 20px; /* Отступ снизу параграфа */
+    font-size: 23px;
+    color: #7f7f7f;
+     font-family: "Comfortaa";
+      margin-top: 6%;
+}
+
+.main__box__button {
+    width: 200px;
+    height: 70px;
+    border-radius: 23px;
+    border: 2px solid black;
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 3%;
+    font-family: "Cormorant";
+    font-size: 22px;
+}
+
+.main__box__button:hover {
+    background-color: #f0f0f0; /* Цвет при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+}
+
+
+
+
+
+
+
+
+
+
+.best{
+text-align: center;
+
+}
+.best h1{
+color: white;
+font-family:"Cormorant";
+font-size: 55px;
+margin-left: 18%;
+
+
+ }
+
+.best_offers {
+flex: 1;
+    padding: 20px;
+
+    text-align: center; /* Центрируем текст внутри блока */
+}
+
+.card-container {
+    display: flex; /* Используем flexbox для горизонтального расположения карточек */
+    justify-content: center; /* Центрируем карточки */
+    margin-top: 70px; /* Отступ сверху */
+    margin-left: 20%;
+}
+
+.card {
+    background-color: white; /* Цвет фона карточки */
+    border-radius: 10px; /* Скругление углов карточки */
+    padding: 15px; /* Внутренние отступы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для карточки */
+    width: calc(25% - 10px); /* Ширина карточки (4 карточки в ряд) */
+    margin: 0 5px; /* Отступы между карточками */
+    text-align: center; /* Центрируем текст внутри карточки */
+    height: 355px;
+}
+
+.icon img {
+  border-radius: 18px; /* Скругление углов */
+}
+.card h2{
+  font-family: "Comfortaa";}
+
+
+
+.image-text-block {
+    margin-top: 12%; /* Отступ сверху */
+    margin-left: 21.5%; /* Отступ слева */
+    overflow: hidden; /* Обернуть плавающие элементы */
+}
+
+.image-container {
+    float: left; /* Плаваем изображение влево */
+    width: 40%; /* Ширина для изображения */
+    margin-right: 20px; /* Отступ справа для текста */
+}
+
+.image-container img {
+    width: 100%; /* Изображение заполняет весь контейнер */
+    height: auto; /* Сохраняем пропорции изображения */
+    border-radius: 25px; /* Скругление углов изображения */
+}
+
+.text-container {
+    overflow: hidden; /* Это помогает избежать проблем с обтеканием */
+}
+
+.text-container h1 {
+    font-size: 50px;
+    color: white;
+    font-family: "Comfortaa";
+    margin-bottom: 30px;
+}
+
+.text-container p {
+    color: white;
+    font-family: "Cormorant";
+    font-size: 25px;
+}
+
+/* Убираем float из text-container и добавляем clearfix для image-text-block */
+.image-text-block::after {
+    content: "";
+    display: table;
+    clear: both; /* Убираем эффект float */
+}
+.text-container-two{
+color: white;
+    font-family: "Cormorant";
+    font-size: 25px;
+
+}
+.image-text-block{
+background: #333232;
+ border-radius: 25px;}
+
+.delivery {
+  display: flex;
+  margin-left: 250px;
+  padding: 20px;
+   margin-top: 10%;
+}
+
+.photo-container {
+  display: flex;
+  width: 50%; /* Увеличиваем ширину фото блоков */
+}
+
+.photo-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+}
+
+.photo-left img {
+  width:100%;
+ height: 240px;
+  margin-bottom: 30px;
+  border-radius: 25px;
+}
+
+.photo-right {
+  position: relative;
+  left: 19px;
+  width: 60%;
+  height: 94%;
+
+}
+
+.photo-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.text {
+  width: 50%; /* Уменьшаем ширину текстового блока */
+  padding-left: 35px;
+  text-align: left;
+  color: white;
+}
+
+.text p{
+
+ font-size: 30px;
+ margin-top: 8%;
+  font-family: "Cormorant";
+}
+
+.text h2{
+font-size: 40px;
+font-family: "Comfortaa";
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 225px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-col {
+    width: 25%; /* Ширина колонки */
+}
+.first-col {
+    width: 40%; /* Ширина первой колонки */
+}
+
+.first-col h3 {color: #fff;
+    margin-bottom: 10px;
+    text-align: left;
+     font-family: "Great Vibes";
+     font-size: 50px;}
+
+.footer-col h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: "Cormorant";
+
+}
+div.first-col img{
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    font-family: "Cormorant";
+    font-size: 20px;
+}
+
+.footer-col li {
+    margin-bottom: 5px;
+}
+
+.footer-col li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-col li a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links li {
+    margin: 0 5px;
+}
+
+.social-links li a {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.social-links li a:hover {
+    color: #007bff;
+}
+
+.copyright {
+    font-size: 0.8em;
+    color: #fff;
+    margin-top: 10px;
+}
+
+div.first-col p{
+text-align: left;
+font-family: "Cormorant";
+font-size: 20px;}
+
+div.two-col{
+margin-top: 10px;}
+
+div.second-col { /* Добавляем класс второй колонке */
+    margin-top: 70px; /* Отступ сверху

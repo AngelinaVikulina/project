@@ -1,0 +1,72 @@
+/* cart.css */
+
+body {
+    background-image: url(../images/background.jfif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Фиксирует фон на месте */
+    color: #ffffff;
+}
+
+h3 {
+    color: white;
+}
+
+p.text-center {
+    color: white;
+}
+
+.navbar {
+    background-color: transparent; /* Прозрачный фон для навигационной панели */
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff; /* Белый текст для навигационной панели */
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #cccccc; /* Светло-серый текст при наведении */
+}
+
+.container {
+    background-color: transparent; /* Прозрачный фон для контейнера */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.card {
+    background-color: transparent; /* Прозрачный фон для карточек */
+    border: 1px solid #444444;
+    color: black; /* Белый текст */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}

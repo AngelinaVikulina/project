@@ -1,0 +1,81 @@
+body {
+    background-image: url(../images/background.jfif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Фиксирует фон на месте */
+    color: #ffffff;
+}
+.card-body {
+    padding: 15px; /* Увеличьте внутренние отступы карточек */
+    color: black; /* Установите цвет текста на черный */
+}
+
+
+.features {
+    text-align: center; /* Выровнять текст по центру */
+    margin: 0 auto; /* Центрировать контейнер */
+    max-width: 600px; /* Установите максимальную ширину контейнера */
+    padding: 20px; /* Добавьте внутренние отступы */
+    margin-left: 460px;
+}
+
+.features h1, .features p {
+    margin-bottom: 15px; /* Добавьте отступы между элементами */
+}
+
+.features .btn {
+    margin: 5px; /* Добавьте отступы между кнопками */
+}
+
+/* Убедитесь, что текст не уезжает влево */
+.features p {
+    text-align: center; /* Выровнять текст по центру */
+    margin: 0 auto; /* Центрировать текст */
+    max-width: 100%; /* Установите максимальную ширину текста */
+}
+
+
+.featuresForm {
+    text-align: center; /* Выровнять текст по центру */
+    margin: 0 auto; /* Центрировать контейнер */
+    max-width: 600px; /* Установите максимальную ширину контейнера */
+    padding: 20px; /* Добавьте внутренние отступы */
+    margin-left: 21%; /* Сдвинуть контейнер немного влево */
+}
+
+.featuresForm .name {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 330px;
+}
+
+.featuresForm form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.featuresForm .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.featuresForm .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.featuresForm .form-group input,
+.featuresForm .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.featuresForm .btn-success {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
