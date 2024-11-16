@@ -80,13 +80,6 @@ body {
 
 
 
-
-
-
-
-
-
-
 .best{
 text-align: center;
 
@@ -339,3 +332,27 @@ margin-top: 10px;}
 
 div.second-col { /* Добавляем класс второй колонке */
     margin-top: 70px; /* Отступ сверху
+
+.footer-content {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Уменьшите это значение для более близкого расположения колонок */
+    }
+
+    .first-col, .second-col {
+        flex: 1;
+        max-width: 310px; /* Ограничьте ширину колонок для более компактного вида */
+    }
+
+    .first-col h3, .second-col h3 {
+        font-size: 40px; /* Увеличьте размер заголовков */
+    }
+
+     .first-col {
+        margin-left: 70px; /* Сдвиньте первую колонку вправо */
+    }
+
+
+    .first-col p, .second-col ul li a {
+        font-size: 25px; /* Увеличьте размер текста */
+    }

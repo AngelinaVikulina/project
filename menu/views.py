@@ -8,7 +8,6 @@ import json
 import logging
 import random
 import requests
-
 logger = logging.getLogger(__name__)
 
 # Настройки SMS.ru
@@ -44,6 +43,14 @@ def process_payment(request):
                 logger.debug(f"Received payment data: {data}")
                 logger.debug(f"Confirmation code sent to {phone}: {confirmation_code}")
 
+                # Уменьшение количества блюд в корзине
+                user = request.user
+                cart_items = CartItem.objects.filter(user=user)
+                for cart_item in cart_items:
+                    dish = cart_item.dish
+                    dish.stock -= cart_item.quantity
+                    dish.save()
+
                 # Пример успешного ответа
                 return JsonResponse({'success': True, 'message': 'Платеж успешно обработан', 'confirmation_code': confirmation_code})
             else:
@@ -77,11 +84,18 @@ def menu(request):
 def add_to_cart(request, dish_id):
     dish = get_object_or_404(Dish, id=dish_id)
     cart_item, created = CartItem.objects.get_or_create(user=request.user, dish=dish)
+
+    if not created and cart_item.quantity + 1 > dish.stock:
+        return JsonResponse({'success': False, 'message': f'Извините, у нас осталось только {dish.stock} блюд {dish.name}.'})
+
     if not created:
         cart_item.quantity += 1
         cart_item.save()
-    return redirect('menu')
 
+    if request.is_ajax():
+        return JsonResponse({'success': True})
+
+    return redirect('menu')
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)

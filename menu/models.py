@@ -6,12 +6,10 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='dishes/', blank=True, null=True)
-
-
+    stock = models.PositiveIntegerField(default=10)  # Добавлено поле stock
 
     def __str__(self):
         return self.name
-
 
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

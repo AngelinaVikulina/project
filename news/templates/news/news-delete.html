@@ -3,14 +3,12 @@
 
 {% block content %}
 {% load static %}
- <link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
-     <div class="features">
-        <h1 class="name">Удаление отзыва</h1>
-        <form method="post">
-             {% csrf_token %}
-             <button class="btn btn-success" type="submit">Удалить отзыв</button>
-
-
-        </form>
-    </div>
+<link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
+<div class="features">
+    <h1 class="name">Удаление отзыва</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-success delete-review-btn" type="submit">Удалить отзыв</button>
+    </form>
+</div>
 {% endblock %}

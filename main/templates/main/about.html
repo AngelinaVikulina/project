@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-            <!-- Боковое меню -->
-            {% include 'main/layout.html' %}
-        </div>
-        <div class="col-md-9 content-with-sidebar">
+        <div class="col-md-8 offset-md-3 content-with-sidebar">
             <div class="jumbotron mt-4 bg-white">
                 <h1 class="display-4">О нас</h1>
                 <p class="lead">Добро пожаловать в ресторан "Кулинарный изыск"! Мы рады приветствовать вас в нашем уютном заведении, где вы можете насладиться изысканными блюдами и приятной атмосферой.</p>
@@ -22,36 +18,35 @@
             </div>
 
             <h2 class="mt-5">Наша команда</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'images/chef1.jpg' %}" class="card-img-top" alt="Шеф-повар">
-                        <div class="card-body">
-                            <h5 class="card-title">Иван Иванов</h5>
-                            <p class="card-text">Шеф-повар</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'images/chef2.jpg' %}" class="card-img-top" alt="Шеф-повар">
-                        <div class="card-body">
-                            <h5 class="card-title">Мария Петрова</h5>
-                            <p class="card-text">Су-шеф</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{% static 'images/chef3.jpg' %}" class="card-img-top" alt="Шеф-повар">
-                        <div class="card-body">
-                            <h5 class="card-title">Алексей Сидоров</h5>
-                            <p class="card-text">Патисьер</p>
-                        </div>
-                    </div>
+              <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'main/images/chef1.jpg' %}" class="card-img-top" alt="Шеф-повар">
+                <div class="card-body">
+                    <h5 class="card-title">Иван Иванов</h5>
+                    <p class="card-text">Шеф-повар</p>
                 </div>
             </div>
-
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'main/images/chef2.jpg' %}" class="card-img-top" alt="Шеф-повар">
+                <div class="card-body">
+                    <h5 class="card-title">Мария Петрова</h5>
+                    <p class="card-text">Су-шеф</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'main/images/chef3.jpg' %}" class="card-img-top" alt="Шеф-повар">
+                <div class="card-body">
+                    <h5 class="card-title">Алексей Сидоров</h5>
+                    <p class="card-text">Патисьер</p>
+                </div>
+            </div>
+        </div>
+    </div>
             <h2 class="mt-5">Наше местоположение</h2>
             <div id="map" style="height: 400px;"></div>
         </div>
@@ -71,4 +66,3 @@
         .openPopup();
 </script>
 {% endblock %}
-

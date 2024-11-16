@@ -4,32 +4,78 @@
 
 {% block content %}
 {% load static %}
- <link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <!-- Боковое меню здесь -->
-            </div>
-            <div class="col-md-10 content-container">
-                <div class="container mt-3">
-                    <h1 class="text-center mb-4">Отзывы о нас</h1>
-                    {% if news %}
-                        {% for el in news %}
-                            <div class="card mb-4 review-card">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ el.title }}</h4>
-                                    <p class="card-text">{{ el.anons }}</p>
-                                    <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Прочитать отзыв</a>
-                                </div>
+<link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!-- Боковое меню здесь -->
+        </div>
+        <div class="col-md-10 content-container">
+            <div class="container mt-3">
+                <h1 class="text-center mb-4 google-font">Отзывы о нас</h1>
+                {% if news %}
+                    {% for el in news %}
+                        <div class="card mb-4 review-card">
+                            <div class="card-body">
+
+                                <p class="card-text">{{ el.anons }}</p>
+                                <p class="card-text"><strong>Автор:</strong> {{ el.author.username }}</p>
+                                <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Прочитать отзыв</a>
+                                <span class="like-icon" data-article-id="{{ el.id }}">
+                                    <i class="fas fa-thumbs-up {% if el.user_like %}text-primary{% endif %}"></i> <span class="likes-count">{{ el.likes_count }}</span>
+                                </span>
+                                <span class="dislike-icon" data-article-id="{{ el.id }}">
+                                    <i class="fas fa-thumbs-down {% if el.user_dislike %}text-danger{% endif %}"></i> <span class="dislikes-count">{{ el.dislikes_count }}</span>
+                                </span>
                             </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="alert alert-info text-center" role="alert">
-                            У вас нет записей!
                         </div>
-                    {% endif %}
-                </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-info text-center" role="alert">
+                        У вас нет записей!
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   $(document).ready(function() {
+    $('.like-icon, .dislike-icon').click(function() {
+        var articleId = $(this).data('article-id');
+        var isLike = $(this).hasClass('like-icon');
+        var likeIcon = $('.like-icon[data-article-id="' + articleId + '"] i');
+        var dislikeIcon = $('.dislike-icon[data-article-id="' + articleId + '"] i');
+
+        $.ajax({
+            url: '/news/' + articleId + '/like/',
+            method: 'POST',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                is_like: isLike
+            },
+            success: function(data) {
+                var likesCountElement = $('.like-icon[data-article-id="' + articleId + '"] .likes-count');
+                var dislikesCountElement = $('.dislike-icon[data-article-id="' + articleId + '"] .dislikes-count');
+                likesCountElement.text(data.likes);
+                dislikesCountElement.text(data.dislikes);
+
+                // Обновление цвета значков
+                if (isLike) {
+                    likeIcon.toggleClass('text-primary');
+                    dislikeIcon.removeClass('text-danger');
+                } else {
+                    dislikeIcon.toggleClass('text-danger');
+                    likeIcon.removeClass('text-primary');
+                }
+            }
+        });
+    });
+});
+
+</script>
 {% endblock %}

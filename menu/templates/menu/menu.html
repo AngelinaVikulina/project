@@ -2,9 +2,11 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-center">Меню</h3>
+        <h3 class="text-center menu">Меню</h3>
         <div class="d-flex align-items-center">
             <input type="text" id="searchInput" class="form-control mr-2" placeholder="Поиск блюд...">
             <a href="{% url 'view_cart' %}" class="btn btn-primary">
@@ -14,28 +16,47 @@
     </div>
 
     <div class="row" id="dishList">
-        {{dishes}}
         {% for dish in dishes %}
-         {{dish.image}}
         <div class="col-md-4 dish-item">
             <div class="card mb-4">
-               {% if dish.image %}
-    <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
-{% else %}
-                {{dish.image}}
-    <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top" alt="Default Image">
-{% endif %}
-
+                {% if dish.image %}
+                <img src="{{ dish.image.url }}" class="card-img-top fixed-image" alt="{{ dish.name }}">
+                {% else %}
+                <img src="{% static 'images/default_dish.jpg' %}" class="card-img-top fixed-image" alt="Default Image">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ dish.name }}</h5>
                     <p class="card-text">{{ dish.description }}</p>
                     <p class="card-text">Цена: {{ dish.price }} руб.</p>
-                    <a href="{% url 'add_to_cart' dish.id %}" class="btn btn-primary">Добавить в корзину</a>
+                    {% if dish.stock > 0 %}
+                        <a href="{% url 'add_to_cart' dish.id %}" class="btn btn-primary add-to-cart" data-url="{% url 'add_to_cart' dish.id %}">Добавить в корзину</a>
+                    {% else %}
+                        <button class="btn btn-secondary" disabled>Нет в наличии</button>
+                    {% endif %}
                 </div>
             </div>
         </div>
         {% endfor %}
+    </div>
+</div>
 
+<!-- Модальное окно для отображения сообщения об ошибке -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Ошибка</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="errorModalBody">
+                <!-- Сообщение об ошибке будет вставлено сюда -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -52,6 +73,33 @@
             } else {
                 item.style.display = 'none';
             }
+        });
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.getAttribute('data-url');
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    document.getElementById('errorModalBody').innerText = data.message;
+                    $('#errorModal').modal('show');
+                } else {
+                    window.location.href = this.getAttribute('href');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     });
 </script>

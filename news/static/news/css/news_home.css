@@ -74,8 +74,60 @@ body {
     border-radius: 4px;
 }
 
-.featuresForm .btn-success {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
+
+.features2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 260px; /* Учитываем ширину бокового меню */
 }
+
+.name2 {
+    margin-bottom: 20px; /* Добавляем отступ между заголовком и кнопкой */
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.delete-review-btn.btn-success {
+  margin-left: -370px;
+
+}
+.text-primary {
+    color: blue;
+}
+
+.text-danger {
+    color: red;
+}
+
+.like-icon i, .dislike-icon i {
+    cursor: pointer;
+}
+
+.comments-title {
+    margin-top: 50px; /* Отступ сверху для заголовка "Комментарии" */
+}
+
+.comment-form {
+    margin-left: 30px; /* Смещение формы комментариев левее */
+}
+.article-title {
+    font-size: 4em !important; /* Увеличиваем размер текста заголовка и используем !important для приоритета */
+    margin-top: 20px; /* Добавляем отступ сверху, если нужно */
+}
+.full{
+font-size: 2.5em !important;
+}
+
+.google-font {
+        font-family: 'Comfortaa', sans-serif;
+        font-weight: 700;
+    }
+
+.name{
+font-family: 'Comfortaa', sans-serif;
+        font-weight: 700;
+        font-size: 33px;
+        margin-right: -30px;
+        }

@@ -3,15 +3,41 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'news/css/news_home.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <div class="features text-center">
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.data }}</p>
-    <p>{{ article.full_text }}</p>
+    <h1 class="article-title">{{ article.title }}</h1>
+    <p>{{ article.date }}</p>
+    <p class = "full">{{ article.full_text }}</p>
+
     {% if request.user == article.author %}
         <a href="{% url 'news-delete' article.id %}" class="btn btn-danger">Удалить</a>
         <a href="{% url 'news-update' article.id %}" class="btn btn-info">Редактировать</a>
     {% endif %}
+
+    <!-- Лайки и дизлайки -->
+    <span class="like-icon">
+        <i class="fas fa-thumbs-up {% if article.user_like %}text-primary{% endif %}"></i> <span class="likes-count">{{ likes_count }}</span>
+    </span>
+    <span class="dislike-icon">
+        <i class="fas fa-thumbs-down {% if article.user_dislike %}text-danger{% endif %}"></i> <span class="dislikes-count">{{ dislikes_count }}</span>
+    </span>
+
+    <!-- Комментарии -->
+    <h3 class="comments-title">Комментарии</h3>
+    {% for comment in comments %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <p>{{ comment.user.username }}: {{ comment.text }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- Форма для добавления комментария -->
+    <form method="post" action="{% url 'add-comment' article.id %}" class="comment-form">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+    </form>
 </div>
 {% endblock %}
-

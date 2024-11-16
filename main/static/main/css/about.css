@@ -1,5 +1,11 @@
-.content-with-sidebar {
-     margin-left: -20px;}
-
+body {
+    background: black;
+}
 .mt-5{
 color:white;}
+
+
+.card-img-top {
+    height: 160px; /* Фиксированная высота */
+    object-fit: cover; /* Чтобы изображение не искажалось */
+}
